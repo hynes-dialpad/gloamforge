@@ -350,10 +350,10 @@ Design Notes: the Impeccable detector pass for the logo correction reported only
 - Goal achievement: 6 of 6 reviewer truths verified after fixes.
 - Final regression: `npm test` passed 5 of 5 and rebuilt the GitHub Pages export; the changed frontend TypeScript surface passed `tsc --noEmit`; lint exited 0 with only 138 warnings inside the installed Impeccable skill bundle.
 - Final code-review gate: approved by the user on 2026-07-23.
+- Production publication: commit `4b788ac` deployed through GitHub Pages run `30044833472`; the published hero, Gatewarden helm mark, relative assets, and “Begin Mission I” interaction passed browser verification at `https://hynes-dialpad.github.io/gloamforge/`.
 
 ### Not Verified
 
 | Not Verified | Reason |
 |--------------|--------|
 | Repository-wide `tsc --noEmit` | Three ambient Cloudflare worker type errors remain in unchanged `db/index.ts` and `worker/index.ts`; the plan-scoped frontend typecheck passes. |
-| Updated production GitHub Pages deployment | Commit and push were not authorized in this workflow; the local production export was served and browser-verified. |
