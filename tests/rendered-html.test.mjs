@@ -62,5 +62,6 @@ test("exports a self-contained GitHub Pages entry point", async () => {
   assert.match(html, /href="\.\/assets\//);
   assert.doesNotMatch(html, /(?<!\.)\/assets\//);
   assert.match(html, /href="\.\/favicon\.svg"/);
+  assert.doesNotMatch(html, /(?<!\.)\/favicon\.svg/);
   assert.match(html, /<meta property="og:image" content="(?:https:\/\/[^\"]+\/|\.\/)og\.png"/i);
 });

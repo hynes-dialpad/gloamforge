@@ -46,7 +46,7 @@ let html = await renderHomePage();
 
 html = html
   .replaceAll("/assets/", "./assets/")
-  .replaceAll('href="/favicon.svg"', 'href="./favicon.svg"')
+  .replaceAll("/favicon.svg", "./favicon.svg")
   .replaceAll('content="/og.png"', `content="${socialImageUrl}"`);
 
 await Promise.all([
