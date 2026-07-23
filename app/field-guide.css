@@ -1,55 +1,102 @@
 .fieldKit {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  gap: 2rem 5rem;
-  width: min(86rem, calc(100% - 3rem));
-  margin: 0 auto;
-  padding: 7rem 0;
+  margin-top: 1.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--iron);
 }
 
-.fieldKitIntro p:last-child {
-  max-width: 36rem;
-  margin: 1.3rem 0 0;
-  color: var(--muted);
+.fieldKit > summary {
+  display: grid;
+  min-height: 52px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.fieldKit > summary::marker {
+  color: var(--brass);
+}
+
+.fieldKit > summary span {
+  font-family: var(--display);
+  font-size: 1.18rem;
+}
+
+.fieldKit > summary small {
+  color: var(--ash);
+  font-size: 0.84rem;
+}
+
+.fieldKitBody {
+  display: grid;
+  gap: 1.25rem;
+  padding: 0.25rem 1rem 1rem;
+}
+
+.fieldKitIntro p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--ash);
 }
 
 .trackpadMap {
   display: grid;
-  grid-template-columns: minmax(10rem, 0.8fr) 1.2fr;
-  gap: 2rem;
+  gap: 1.25rem;
   align-items: center;
-  padding: 2rem;
-  border: 1px solid var(--line);
-  background: var(--panel);
+  padding: 1rem;
+  background: var(--raised-iron);
 }
 
 .trackpadSurface {
   position: relative;
-  aspect-ratio: 1.28;
-  border: 1px solid var(--line-bright);
-  border-radius: 0.8rem;
+  width: min(100%, 17rem);
+  aspect-ratio: 1.45;
+  justify-self: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
   background:
-    radial-gradient(circle at 60% 35%, rgb(220 132 80 / 16%), transparent 44%),
-    #0c100d;
+    linear-gradient(135deg, rgb(210 182 111 / 8%), transparent 55%),
+    var(--void);
+}
+
+.trackpadSurface::before,
+.trackpadSurface::after {
+  position: absolute;
+  content: "";
+}
+
+.trackpadSurface::before {
+  inset: 0.8rem;
+  border: 1px solid rgb(142 148 140 / 25%);
+  border-radius: 10px;
+}
+
+.trackpadSurface::after {
+  right: 1.2rem;
+  bottom: 1rem;
+  width: 2.4rem;
+  height: 1px;
+  background: var(--brass);
 }
 
 .finger {
   position: absolute;
-  width: 1.4rem;
-  height: 3.2rem;
-  border: 1px solid var(--ember-bright);
+  z-index: 1;
+  width: 1.25rem;
+  height: 3rem;
+  border: 1px solid var(--brass);
   border-radius: 1rem;
-  background: rgb(220 132 80 / 9%);
+  background: #2b271e;
   transform: rotate(22deg);
 }
 
 .fingerOne {
-  top: 28%;
+  top: 27%;
   left: 38%;
 }
 
 .fingerTwo {
-  top: 32%;
+  top: 31%;
   left: 56%;
 }
 
@@ -58,39 +105,39 @@
 }
 
 .trackpadMap dl div {
-  padding: 0.6rem 0;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.55rem 0;
   border-bottom: 1px solid var(--line);
 }
 
 .trackpadMap dt {
-  color: var(--ember-bright);
-  font-size: 0.78rem;
-  font-weight: 800;
+  color: var(--brass);
+  font-weight: 700;
 }
 
 .trackpadMap dd {
-  margin: 0.15rem 0 0;
-  color: var(--parchment-soft);
-  font-size: 0.84rem;
+  margin: 0;
+  color: var(--bone);
 }
 
 .mouseNote {
-  display: flex;
-  grid-column: 1 / -1;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 1rem;
   align-items: start;
-  padding: 1.5rem;
-  border: 1px solid var(--moss);
-  border-radius: 0.2rem;
-  background: rgb(127 150 118 / 8%);
+  padding: 1rem;
+  border: 1px solid #657361;
+  border-radius: 6px;
+  background: var(--success-surface);
 }
 
 .mouseShape {
   position: relative;
   width: 2.2rem;
-  height: 3.2rem;
-  flex: 0 0 auto;
-  border: 1px solid var(--success);
+  height: 3rem;
+  border: 1px solid var(--success-text);
   border-radius: 1.1rem;
 }
 
@@ -99,256 +146,41 @@
   top: 0;
   left: 50%;
   width: 1px;
-  height: 1.3rem;
-  background: var(--success);
+  height: 1.25rem;
+  background: var(--success-text);
   content: "";
 }
 
 .mouseNote strong {
-  color: var(--success);
+  color: var(--success-text);
   font-family: var(--display);
-  font-size: 1.2rem;
+  font-size: 1.18rem;
+  font-weight: 400;
 }
 
 .mouseNote p {
-  max-width: 62rem;
+  max-width: 62ch;
   margin: 0.35rem 0 0;
-  color: var(--parchment-soft);
+  color: var(--success-text);
 }
 
 .mouseNote a {
-  display: inline-block;
-  margin-top: 0.7rem;
-  color: var(--ember-bright);
-  font-size: 0.82rem;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  margin-top: 0.45rem;
+  color: var(--success-text);
+  font-weight: 650;
 }
 
-.nextChapter {
-  width: min(92rem, calc(100% - 3rem));
-  margin: 0 auto;
-  padding: clamp(3rem, 7vw, 7rem);
-  border: 1px solid var(--line);
-  background:
-    radial-gradient(circle at 100% 0, rgb(220 132 80 / 12%), transparent 30rem),
-    var(--ink-soft);
-}
-
-.futurePath {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 3rem;
-  margin: 3rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.futurePath li {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 0 1rem;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.futurePath span {
-  grid-row: 1 / span 2;
-  color: var(--ember-bright);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-}
-
-.futurePath strong {
-  font-family: var(--display);
-  font-size: 1.2rem;
-}
-
-.futurePath p {
-  margin: 0.2rem 0 0;
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.siteFooter {
-  display: flex;
-  gap: 3rem;
-  align-items: end;
-  justify-content: space-between;
-  width: min(86rem, calc(100% - 3rem));
-  margin: 0 auto;
-  padding: 4rem 0 3rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-.siteFooter strong {
-  color: var(--parchment);
-  font-family: var(--display);
-  font-size: 1.25rem;
-}
-
-.siteFooter p {
-  max-width: 38rem;
-  margin: 0.4rem 0 0;
-}
-
-.footerActions {
-  text-align: right;
-}
-
-.footerActions button {
-  min-height: 2.75rem;
-  margin-top: 0.65rem;
-  padding: 0.5rem 0.85rem;
-  border: 1px solid var(--line-bright);
-  border-radius: 0.2rem;
-  background: transparent;
-  color: var(--parchment-soft);
-  cursor: pointer;
-  font-size: 0.75rem;
-}
-
-.footerActions button:hover {
-  border-color: var(--ember-bright);
-  color: var(--ember-bright);
-}
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 4rem;
+@media (min-width: 44rem) {
+  .fieldKitBody {
+    padding: 0.5rem 1.25rem 1.25rem;
   }
 
-  .heroArtifact {
-    width: min(33rem, 90%);
-    justify-self: end;
-  }
-
-  .versionDock,
-  .lessonWorkspace,
-  .fieldKit {
-    grid-template-columns: 1fr;
-  }
-
-  .missionBrief {
-    position: static;
-  }
-
-  .fieldKit {
-    gap: 2.5rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .topBar,
-  .hero,
-  .versionDock,
-  .courseSection,
-  .lessonWorkspace,
-  .fieldKit,
-  .nextChapter,
-  .siteFooter {
-    width: min(100% - 1.5rem, 92rem);
-  }
-
-  .topBar {
-    min-height: 4.5rem;
-  }
-
-  .topNav {
-    display: none;
-  }
-
-  .hero {
-    min-height: auto;
-    gap: 3.5rem;
-    padding: 4rem 0;
-  }
-
-  .hero::before {
-    display: none;
-  }
-
-  .hero h1 {
-    font-size: clamp(3.3rem, 18vw, 5.6rem);
-  }
-
-  .heroArtifact {
-    width: 100%;
-    min-height: 26rem;
-  }
-
-  .artifactFigure {
-    transform: translateX(-50%) scale(0.84);
-  }
-
-  .versionDock,
-  .lessonWorkspace,
-  .nextChapter {
+  .trackpadMap {
+    grid-template-columns: minmax(12rem, 0.8fr) minmax(15rem, 1fr);
+    gap: 2rem;
     padding: 1.5rem;
-  }
-
-  .versionInputRow,
-  .sectionHeading,
-  .siteFooter {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .progressSummary {
-    width: 100%;
-    text-align: left;
-  }
-
-  .missionRoute {
-    grid-template-columns: 2.2rem 1fr;
-  }
-
-  .missionTime {
-    grid-column: 2;
-  }
-
-  .stepHeader {
-    grid-template-columns: 2.4rem 1fr;
-  }
-
-  .completeButton {
-    grid-column: 2;
-    justify-self: start;
-  }
-
-  .stepBrief,
-  .lessonStep ol,
-  .stepFooter {
-    margin-left: 0;
-  }
-
-  .stepFooter,
-  .trackpadMap,
-  .futurePath {
-    grid-template-columns: 1fr;
-  }
-
-  .fieldKit {
-    padding: 5rem 0;
-  }
-
-  .siteFooter {
-    align-items: flex-start;
-  }
-
-  .footerActions {
-    text-align: left;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
   }
 }

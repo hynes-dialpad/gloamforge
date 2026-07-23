@@ -1,79 +1,143 @@
 .lessonWorkspace {
   display: grid;
-  grid-template-columns: minmax(18rem, 0.75fr) minmax(0, 1.5fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  width: min(92rem, calc(100% - 3rem));
-  margin: 3rem auto 0;
-  padding: clamp(2rem, 5vw, 5rem);
-  border: 1px solid var(--line-bright);
-  background: #111512;
+  width: min(calc(100% - 1.5rem), var(--page-width));
+  gap: 2.5rem;
+  margin: 2rem auto 0;
+  padding: 1.25rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--soot);
   scroll-margin-top: 1rem;
 }
 
 .missionBrief {
-  position: sticky;
-  top: 1.5rem;
-  align-self: start;
+  min-width: 0;
+}
+
+.missionBrief h2 {
+  max-width: 13ch;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.3rem, 11vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  text-wrap: balance;
 }
 
 .missionPromise {
-  margin: 1.3rem 0 0;
-  color: var(--parchment-soft);
-  font-family: var(--display);
-  font-size: 1.2rem;
+  max-width: 36ch;
+  margin: 1rem 0 0;
+  color: var(--ash);
+  font-size: 1.05rem;
+}
+
+.missionArtwork {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  margin: 1.5rem 0 0;
+  overflow: hidden;
+  background: var(--iron);
+  clip-path: polygon(0 0, 96% 0, 100% 9%, 100% 100%, 0 100%);
+}
+
+.missionArtwork::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgb(9 11 11 / 58%));
+  content: "";
+}
+
+.missionArtwork img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.86) contrast(1.04);
 }
 
 .briefFacts {
-  margin: 2rem 0;
+  display: grid;
+  margin: 1.5rem 0;
 }
 
 .briefFacts div {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: 0.75rem;
-  padding: 0.75rem 0;
+  padding: 0.7rem 0;
   border-bottom: 1px solid var(--line);
 }
 
 .briefFacts dt {
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  text-transform: uppercase;
+  color: var(--quiet-ash);
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
 }
 
 .briefFacts dd {
+  min-width: 0;
   margin: 0;
   overflow-wrap: anywhere;
-  color: var(--parchment-soft);
-  font-size: 0.85rem;
+  color: var(--bone);
 }
 
 .winCondition {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.75rem;
   padding: 1rem;
-  border: 1px solid var(--moss);
-  border-radius: 0.2rem;
-  background: rgb(127 150 118 / 9%);
+  border: 1px solid #5c715d;
+  border-radius: 6px;
+  background: var(--success-surface);
+  color: var(--success-text);
 }
 
 .winCondition > span {
-  color: var(--success);
   font-family: var(--display);
   font-size: 2rem;
   line-height: 1;
 }
 
 .winCondition strong {
-  color: var(--success);
-  font-size: 0.82rem;
+  display: block;
+  color: var(--success-text);
 }
 
 .winCondition p {
-  margin: 0.3rem 0 0;
-  color: var(--parchment-soft);
-  font-size: 0.84rem;
+  margin: 0.25rem 0 0;
+  color: var(--success-text);
+}
+
+.missionRun {
+  min-width: 0;
+}
+
+.missionRunHeader {
+  margin-bottom: 1rem;
+}
+
+.missionRunHeader p {
+  margin: 0;
+  color: var(--ash);
+  font-size: 0.9rem;
+}
+
+.missionProgress {
+  height: 0.35rem;
+  margin-top: 0.65rem;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.missionProgress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms var(--ease-out);
 }
 
 .stepList {
@@ -81,176 +145,403 @@
 }
 
 .lessonStep {
-  padding: 1.5rem 0 2rem;
   border-bottom: 1px solid var(--line);
-  transition: opacity 160ms ease;
 }
 
 .lessonStep:first-child {
-  padding-top: 0;
+  border-top: 1px solid var(--line);
 }
 
-.lessonStep.complete {
-  opacity: 0.72;
+.lessonStep.expanded {
+  background: var(--iron);
 }
 
-.stepHeader {
+.lessonStep.complete:not(.expanded) {
+  background: var(--success-surface);
+}
+
+.phaseHeading {
+  margin: 0;
+}
+
+.phaseToggle {
   display: grid;
-  grid-template-columns: 3rem 1fr auto;
-  gap: 1rem;
-  align-items: start;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 4.75rem;
+  align-items: center;
+  padding: 0.85rem 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--bone);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 180ms var(--ease-out);
+}
+
+.phaseToggle:hover {
+  background: var(--raised-iron);
 }
 
 .stepIndex {
-  color: var(--ember-bright);
+  color: var(--brass);
   font-family: var(--mono);
   font-size: 0.78rem;
 }
 
-.stepMinutes {
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.7rem;
+.phaseTitle {
+  display: grid;
+  min-width: 0;
+  gap: 0.1rem;
+  font-family: var(--display);
+  font-size: 1.22rem;
+  font-weight: 400;
+  line-height: 1.18;
 }
 
-.stepHeader h3,
-.stretchChallenge h3 {
-  margin: 0.15rem 0 0;
-  font-family: var(--display);
-  font-size: 1.65rem;
+.stepMinutes {
+  color: var(--quiet-ash);
+  font-family: var(--body);
+  font-size: 0.8rem;
   font-weight: 600;
 }
 
-.completeButton {
+.phaseState {
   display: inline-flex;
-  min-height: 2.75rem;
+  min-height: 2rem;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.75rem;
-  border: 1px solid var(--line-bright);
-  border-radius: 0.2rem;
-  background: transparent;
-  color: var(--parchment-soft);
-  cursor: pointer;
-  font-size: 0.76rem;
+  justify-content: center;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ash);
+  font-size: 0.75rem;
+  font-weight: 650;
 }
 
-.completeButton:hover {
-  border-color: var(--success);
+.lessonStep.expanded .phaseState {
+  border-color: var(--brass);
+  color: var(--brass);
 }
 
-.completeButton[aria-pressed="true"] {
-  border-color: var(--success);
-  background: rgb(155 191 132 / 12%);
-  color: var(--success);
+.lessonStep.complete .phaseState {
+  border-color: #6f826b;
+  color: var(--success-text);
 }
 
-.checkMark {
-  display: grid;
-  width: 1.25rem;
-  height: 1.25rem;
-  place-items: center;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  font-family: var(--mono);
-  font-size: 0.48rem;
-  font-weight: 800;
+.phasePanel {
+  padding: 0.25rem 0.75rem 1.5rem;
+}
+
+.phasePanel[hidden] {
+  display: none;
 }
 
 .stepBrief {
-  margin: 1.2rem 0 0 4rem;
-  color: var(--parchment-soft);
+  max-width: var(--reading-width);
+  margin: 1rem 0 0;
+  color: var(--bone);
+  font-size: 1.05rem;
 }
 
-.lessonStep ol {
+.phasePanel > ol {
   display: grid;
-  gap: 0.75rem;
-  margin: 1.2rem 0 0 4rem;
+  max-width: var(--reading-width);
+  gap: 0.85rem;
+  margin: 1.25rem 0 0;
   padding: 0;
   list-style: none;
   counter-reset: actions;
 }
 
-.lessonStep li {
+.phasePanel > ol li {
   position: relative;
   padding-left: 2.4rem;
-  color: var(--parchment-soft);
+  color: var(--ash);
   counter-increment: actions;
 }
 
-.lessonStep li::before {
+.phasePanel > ol li::before {
   position: absolute;
   top: 0.05rem;
   left: 0;
   display: grid;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.55rem;
+  height: 1.55rem;
   place-items: center;
-  border: 1px solid var(--line-bright);
+  border: 1px solid var(--line-strong);
   border-radius: 50%;
   color: var(--brass);
   content: counter(actions);
   font-family: var(--mono);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
 }
 
 .stepFooter {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1.4rem 0 0 4rem;
+  max-width: var(--reading-width);
+  gap: 0.75rem;
+  margin-top: 1.4rem;
 }
 
 .stepFooter > p,
 .stepFooter details {
   margin: 0;
-  padding: 0.85rem;
+  padding: 0.9rem 1rem;
+  background: var(--raised-iron);
+  color: var(--ash);
+}
+
+.stepFooter > p {
   border: 1px solid var(--line);
-  border-radius: 0.2rem;
-  background: var(--panel);
-  color: var(--muted);
-  font-size: 0.78rem;
+  border-radius: 4px;
+}
+
+.stepFooter details {
+  border: 1px solid var(--line);
+  border-radius: 4px;
 }
 
 .stepFooter strong {
-  color: var(--parchment-soft);
+  color: var(--bone);
 }
 
 .stepFooter summary {
-  min-height: 1.5rem;
-  color: var(--ember-bright);
+  min-height: 44px;
+  padding: 0.45rem 0;
+  color: var(--bone);
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .stepFooter details p {
+  margin: 0.6rem 0 0;
+}
+
+.completeButton {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--raised-iron);
+  color: var(--bone);
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.completeButton:hover {
+  border-color: var(--brass);
+}
+
+.checkMark {
+  display: grid;
+  width: 1.4rem;
+  height: 1.4rem;
+  place-items: center;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  color: var(--brass);
+  font-size: 0.7rem;
+}
+
+.versionControl {
+  max-width: var(--reading-width);
+  margin: 0.8rem 0 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--raised-iron);
+}
+
+.versionControlHeading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+  margin-bottom: 0.9rem;
+}
+
+.versionControlHeading strong {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.versionControlHeading span {
+  color: var(--ash);
+}
+
+.versionControl label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--bone);
+  font-weight: 650;
+}
+
+.versionInputRow {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.versionInputRow input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--void);
+  color: var(--bone);
+}
+
+.versionInputRow input::placeholder {
+  color: #a1a69f;
+}
+
+.versionInputRow a {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--brass);
+  border-radius: 4px;
+  color: var(--bone);
+  text-decoration: none;
+}
+
+.versionInputRow a:hover {
+  background: var(--brass);
+  color: var(--soot);
+}
+
+.versionNote {
   margin: 0.7rem 0 0;
+  color: var(--ash);
+}
+
+.versionNote.warning {
+  padding: 0.85rem 1rem;
+  border: 1px solid #7d6739;
+  border-radius: 4px;
+  background: var(--warning-surface);
+  color: var(--warning-text);
+}
+
+.missionComplete {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border: 1px solid #60725e;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgb(199 217 182 / 8%), transparent 20rem),
+    var(--success-surface);
+}
+
+.missionComplete h3 {
+  max-width: 15ch;
+  margin: 0;
+  color: var(--success-text);
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 8vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.missionComplete > p:not(.sectionLabel) {
+  max-width: 52ch;
+  margin: 0.8rem 0 1.25rem;
+  color: var(--success-text);
 }
 
 .stretchChallenge {
-  display: flex;
-  gap: 1.2rem;
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border: 1px solid var(--brass);
-  border-radius: 0.2rem;
-  background: rgb(183 166 108 / 8%);
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+  padding: 1rem;
+  border: 1px solid #6d6345;
+  border-radius: 6px;
+  background: #242118;
 }
 
 .stretchMark {
   display: grid;
-  width: 2.4rem;
-  height: 2.4rem;
-  flex: 0 0 auto;
+  width: 2.2rem;
+  height: 2.2rem;
   place-items: center;
   border: 1px solid var(--brass);
-  border-radius: 50%;
+  transform: rotate(45deg);
   color: var(--brass);
   font-family: var(--display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.stretchMark + div {
+  min-width: 0;
+}
+
+.stretchChallenge h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .stretchChallenge p:last-child {
-  margin: 0.5rem 0 0;
-  color: var(--parchment-soft);
+  margin: 0.45rem 0 0;
+  color: var(--ash);
+}
+
+@media (min-width: 44rem) {
+  .lessonWorkspace {
+    width: min(calc(100% - 3rem), var(--page-width));
+    padding: 2rem;
+  }
+
+  .phasePanel {
+    padding-right: 1.25rem;
+    padding-bottom: 2rem;
+    padding-left: 4rem;
+  }
+
+  .stepFooter {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .versionInputRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (min-width: 64rem) {
+  .lessonWorkspace {
+    grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.45fr);
+    gap: clamp(2.5rem, 5vw, 5.5rem);
+    margin-top: 3rem;
+    padding: clamp(2.5rem, 4vw, 4rem);
+  }
+
+  .missionBrief {
+    position: sticky;
+    top: 1.25rem;
+    align-self: start;
+  }
+
+  .missionArtwork {
+    margin-top: 2rem;
+  }
+
+  .phaseToggle {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .phasePanel {
+    padding-left: 4.25rem;
+  }
 }
