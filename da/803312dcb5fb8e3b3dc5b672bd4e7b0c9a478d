@@ -1,0 +1,19 @@
+docs/plans/2026-07-23-gloamforge-cinematic-redesign.md
+  s_18284821094721::t_45d5abc50d9bd1 353
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "da803312dcb5fb8e3b3dc5b672bd4e7b0c9a478d",
+  "prompts": {},
+  "sessions": {
+    "s_18284821094721": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f8b7c-868b-7ab1-b601-3849323d91ee",
+        "model": "unknown"
+      },
+      "human_author": "Joshua Hynes <jhynes@dialpad.com>"
+    }
+  }
+}
