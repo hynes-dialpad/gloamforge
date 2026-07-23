@@ -45,8 +45,8 @@ const socialImageUrl = pagesUrl ? new URL("og.png", pagesUrl).href : "./og.png";
 let html = await renderHomePage();
 
 html = html
-  .replaceAll('href="/assets/', 'href="./assets/')
-  .replaceAll('src="/assets/', 'src="./assets/')
+  .replaceAll("/assets/", "./assets/")
+  .replaceAll('href="/favicon.svg"', 'href="./favicon.svg"')
   .replaceAll('content="/og.png"', `content="${socialImageUrl}"`);
 
 await Promise.all([
