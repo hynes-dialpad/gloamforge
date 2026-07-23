@@ -1,0 +1,354 @@
+.fieldKit {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  gap: 2rem 5rem;
+  width: min(86rem, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 7rem 0;
+}
+
+.fieldKitIntro p:last-child {
+  max-width: 36rem;
+  margin: 1.3rem 0 0;
+  color: var(--muted);
+}
+
+.trackpadMap {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.8fr) 1.2fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.trackpadSurface {
+  position: relative;
+  aspect-ratio: 1.28;
+  border: 1px solid var(--line-bright);
+  border-radius: 0.8rem;
+  background:
+    radial-gradient(circle at 60% 35%, rgb(220 132 80 / 16%), transparent 44%),
+    #0c100d;
+}
+
+.finger {
+  position: absolute;
+  width: 1.4rem;
+  height: 3.2rem;
+  border: 1px solid var(--ember-bright);
+  border-radius: 1rem;
+  background: rgb(220 132 80 / 9%);
+  transform: rotate(22deg);
+}
+
+.fingerOne {
+  top: 28%;
+  left: 38%;
+}
+
+.fingerTwo {
+  top: 32%;
+  left: 56%;
+}
+
+.trackpadMap dl {
+  margin: 0;
+}
+
+.trackpadMap dl div {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.trackpadMap dt {
+  color: var(--ember-bright);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.trackpadMap dd {
+  margin: 0.15rem 0 0;
+  color: var(--parchment-soft);
+  font-size: 0.84rem;
+}
+
+.mouseNote {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.5rem;
+  border: 1px solid var(--moss);
+  border-radius: 0.2rem;
+  background: rgb(127 150 118 / 8%);
+}
+
+.mouseShape {
+  position: relative;
+  width: 2.2rem;
+  height: 3.2rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--success);
+  border-radius: 1.1rem;
+}
+
+.mouseShape::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 1.3rem;
+  background: var(--success);
+  content: "";
+}
+
+.mouseNote strong {
+  color: var(--success);
+  font-family: var(--display);
+  font-size: 1.2rem;
+}
+
+.mouseNote p {
+  max-width: 62rem;
+  margin: 0.35rem 0 0;
+  color: var(--parchment-soft);
+}
+
+.mouseNote a {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--ember-bright);
+  font-size: 0.82rem;
+}
+
+.nextChapter {
+  width: min(92rem, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 7rem);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 100% 0, rgb(220 132 80 / 12%), transparent 30rem),
+    var(--ink-soft);
+}
+
+.futurePath {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3rem;
+  margin: 3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.futurePath li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0 1rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.futurePath span {
+  grid-row: 1 / span 2;
+  color: var(--ember-bright);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.futurePath strong {
+  font-family: var(--display);
+  font-size: 1.2rem;
+}
+
+.futurePath p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.siteFooter {
+  display: flex;
+  gap: 3rem;
+  align-items: end;
+  justify-content: space-between;
+  width: min(86rem, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 4rem 0 3rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.siteFooter strong {
+  color: var(--parchment);
+  font-family: var(--display);
+  font-size: 1.25rem;
+}
+
+.siteFooter p {
+  max-width: 38rem;
+  margin: 0.4rem 0 0;
+}
+
+.footerActions {
+  text-align: right;
+}
+
+.footerActions button {
+  min-height: 2.75rem;
+  margin-top: 0.65rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--line-bright);
+  border-radius: 0.2rem;
+  background: transparent;
+  color: var(--parchment-soft);
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.footerActions button:hover {
+  border-color: var(--ember-bright);
+  color: var(--ember-bright);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 4rem;
+  }
+
+  .heroArtifact {
+    width: min(33rem, 90%);
+    justify-self: end;
+  }
+
+  .versionDock,
+  .lessonWorkspace,
+  .fieldKit {
+    grid-template-columns: 1fr;
+  }
+
+  .missionBrief {
+    position: static;
+  }
+
+  .fieldKit {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .topBar,
+  .hero,
+  .versionDock,
+  .courseSection,
+  .lessonWorkspace,
+  .fieldKit,
+  .nextChapter,
+  .siteFooter {
+    width: min(100% - 1.5rem, 92rem);
+  }
+
+  .topBar {
+    min-height: 4.5rem;
+  }
+
+  .topNav {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+    gap: 3.5rem;
+    padding: 4rem 0;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.3rem, 18vw, 5.6rem);
+  }
+
+  .heroArtifact {
+    width: 100%;
+    min-height: 26rem;
+  }
+
+  .artifactFigure {
+    transform: translateX(-50%) scale(0.84);
+  }
+
+  .versionDock,
+  .lessonWorkspace,
+  .nextChapter {
+    padding: 1.5rem;
+  }
+
+  .versionInputRow,
+  .sectionHeading,
+  .siteFooter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .progressSummary {
+    width: 100%;
+    text-align: left;
+  }
+
+  .missionRoute {
+    grid-template-columns: 2.2rem 1fr;
+  }
+
+  .missionTime {
+    grid-column: 2;
+  }
+
+  .stepHeader {
+    grid-template-columns: 2.4rem 1fr;
+  }
+
+  .completeButton {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .stepBrief,
+  .lessonStep ol,
+  .stepFooter {
+    margin-left: 0;
+  }
+
+  .stepFooter,
+  .trackpadMap,
+  .futurePath {
+    grid-template-columns: 1fr;
+  }
+
+  .fieldKit {
+    padding: 5rem 0;
+  }
+
+  .siteFooter {
+    align-items: flex-start;
+  }
+
+  .footerActions {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

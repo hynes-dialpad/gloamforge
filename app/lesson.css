@@ -1,0 +1,256 @@
+.lessonWorkspace {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.75fr) minmax(0, 1.5fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  width: min(92rem, calc(100% - 3rem));
+  margin: 3rem auto 0;
+  padding: clamp(2rem, 5vw, 5rem);
+  border: 1px solid var(--line-bright);
+  background: #111512;
+  scroll-margin-top: 1rem;
+}
+
+.missionBrief {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+
+.missionPromise {
+  margin: 1.3rem 0 0;
+  color: var(--parchment-soft);
+  font-family: var(--display);
+  font-size: 1.2rem;
+}
+
+.briefFacts {
+  margin: 2rem 0;
+}
+
+.briefFacts div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.briefFacts dt {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.briefFacts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--parchment-soft);
+  font-size: 0.85rem;
+}
+
+.winCondition {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--moss);
+  border-radius: 0.2rem;
+  background: rgb(127 150 118 / 9%);
+}
+
+.winCondition > span {
+  color: var(--success);
+  font-family: var(--display);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.winCondition strong {
+  color: var(--success);
+  font-size: 0.82rem;
+}
+
+.winCondition p {
+  margin: 0.3rem 0 0;
+  color: var(--parchment-soft);
+  font-size: 0.84rem;
+}
+
+.stepList {
+  min-width: 0;
+}
+
+.lessonStep {
+  padding: 1.5rem 0 2rem;
+  border-bottom: 1px solid var(--line);
+  transition: opacity 160ms ease;
+}
+
+.lessonStep:first-child {
+  padding-top: 0;
+}
+
+.lessonStep.complete {
+  opacity: 0.72;
+}
+
+.stepHeader {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.stepIndex {
+  color: var(--ember-bright);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.stepMinutes {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+}
+
+.stepHeader h3,
+.stretchChallenge h3 {
+  margin: 0.15rem 0 0;
+  font-family: var(--display);
+  font-size: 1.65rem;
+  font-weight: 600;
+}
+
+.completeButton {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line-bright);
+  border-radius: 0.2rem;
+  background: transparent;
+  color: var(--parchment-soft);
+  cursor: pointer;
+  font-size: 0.76rem;
+}
+
+.completeButton:hover {
+  border-color: var(--success);
+}
+
+.completeButton[aria-pressed="true"] {
+  border-color: var(--success);
+  background: rgb(155 191 132 / 12%);
+  color: var(--success);
+}
+
+.checkMark {
+  display: grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  font-weight: 800;
+}
+
+.stepBrief {
+  margin: 1.2rem 0 0 4rem;
+  color: var(--parchment-soft);
+}
+
+.lessonStep ol {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.2rem 0 0 4rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: actions;
+}
+
+.lessonStep li {
+  position: relative;
+  padding-left: 2.4rem;
+  color: var(--parchment-soft);
+  counter-increment: actions;
+}
+
+.lessonStep li::before {
+  position: absolute;
+  top: 0.05rem;
+  left: 0;
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-items: center;
+  border: 1px solid var(--line-bright);
+  border-radius: 50%;
+  color: var(--brass);
+  content: counter(actions);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+}
+
+.stepFooter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.4rem 0 0 4rem;
+}
+
+.stepFooter > p,
+.stepFooter details {
+  margin: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0.2rem;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stepFooter strong {
+  color: var(--parchment-soft);
+}
+
+.stepFooter summary {
+  min-height: 1.5rem;
+  color: var(--ember-bright);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.stepFooter details p {
+  margin: 0.7rem 0 0;
+}
+
+.stretchChallenge {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--brass);
+  border-radius: 0.2rem;
+  background: rgb(183 166 108 / 8%);
+}
+
+.stretchMark {
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  color: var(--brass);
+  font-family: var(--display);
+  font-size: 1.5rem;
+}
+
+.stretchChallenge p:last-child {
+  margin: 0.5rem 0 0;
+  color: var(--parchment-soft);
+}
