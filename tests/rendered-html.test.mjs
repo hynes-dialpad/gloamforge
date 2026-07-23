@@ -64,4 +64,12 @@ test("exports a self-contained GitHub Pages entry point", async () => {
   assert.match(html, /href="\.\/favicon\.svg"/);
   assert.doesNotMatch(html, /(?<!\.)\/favicon\.svg/);
   assert.match(html, /<meta property="og:image" content="(?:https:\/\/[^\"]+\/|\.\/)og\.png"/i);
+
+  const [, entryFile] = html.match(/import\("\.\/assets\/([^\"]+\.js)"\)/) ?? [];
+  assert.ok(entryFile, "expected the exported page to identify its client entry");
+  const entry = await readFile(
+    new URL(`../dist/client/assets/${entryFile}`, import.meta.url),
+    "utf8",
+  );
+  assert.doesNotMatch(entry, /function\([^)]*\)\{return`\/`\+/);
 });
