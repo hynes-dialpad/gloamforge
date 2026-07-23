@@ -1,0 +1,21 @@
+tests/rendered-html.test.mjs
+  s_18284821094721::t_21fa06611e9182 65
+scripts/export-pages.mjs
+  s_18284821094721::t_6cfcfa5a1423ce 49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "3c7d68a4328a19bda10acb1d49f99defef5afdd3",
+  "prompts": {},
+  "sessions": {
+    "s_18284821094721": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f8b7c-868b-7ab1-b601-3849323d91ee",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Joshua Hynes <jhynes@dialpad.com>"
+    }
+  }
+}
