@@ -245,6 +245,33 @@
   font-size: 1.05rem;
 }
 
+.phaseExample {
+  max-width: var(--reading-width);
+  margin: 1.25rem 0 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--raised-iron);
+}
+
+.phaseExample img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.phaseExample figcaption {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-top: 1px solid var(--line);
+  color: var(--ash);
+  font-size: 1rem;
+}
+
+.phaseExample figcaption strong {
+  color: var(--bone);
+}
+
 .phasePanel > ol {
   display: grid;
   max-width: var(--reading-width);

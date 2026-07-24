@@ -3,6 +3,10 @@ export interface LessonStep {
   minutes: string;
   title: string;
   brief: string;
+  example?: {
+    src: string;
+    alt: string;
+  };
   actions: string[];
   proof: string;
   stuck: string;
@@ -47,6 +51,10 @@ export const missions: Mission[] = [
         title: "Name your version",
         brief:
           "This field guide targets Blender 4.5 LTS so the menus stay consistent.",
+        example: {
+          src: "./phase-1-1-version.png",
+          alt: "A simplified Blender splash screen with the version area highlighted.",
+        },
         actions: [
           "In Blender, open Help, then Splash Screen.",
           "Read the version number in the splash screen.",
@@ -62,6 +70,10 @@ export const missions: Mission[] = [
         title: "Circle the default cube",
         brief:
           "Treat the viewport like a camera operator walking around a prop.",
+        example: {
+          src: "./phase-1-2-orbit.png",
+          alt: "A selected default cube viewed from an elevated angle with a subtle orbit path around it.",
+        },
         actions: [
           "Orbit: drag two fingers on the trackpad.",
           "Pan: hold Shift while dragging two fingers.",
@@ -78,6 +90,10 @@ export const missions: Mission[] = [
         title: "Stack a relic marker",
         brief:
           "Make a readable silhouette from only a cube, a cylinder, and a cone.",
+        example: {
+          src: "./phase-1-3-relic.png",
+          alt: "A flattened cube, short cylinder, and tall cone stacked into a simple relic marker.",
+        },
         actions: [
           "Scale the default cube into a wide stone base with S, then Z.",
           "Add a cylinder with Shift+A > Mesh > Cylinder and move it upward with G, then Z.",
@@ -93,6 +109,10 @@ export const missions: Mission[] = [
         minutes: "3 min",
         title: "Bank the ember",
         brief: "End every short session with a file you can trust.",
+        example: {
+          src: "./phase-1-4-checkpoint.png",
+          alt: "The completed three-part relic centered in a clean viewport screenshot.",
+        },
         actions: [
           "Choose File > Save As.",
           "Use the filename gatewarden-01-forge.blend.",
@@ -110,7 +130,7 @@ export const missions: Mission[] = [
     id: "shape-the-warden",
     number: "II",
     title: "Shape the Warden",
-    time: "25 minutes",
+    time: "25-30 minutes",
     focus: "Character silhouette",
     promise: "Block out a fantasy sentinel without sculpting a single detail.",
     outcome:
@@ -123,57 +143,128 @@ export const missions: Mission[] = [
     steps: [
       {
         id: "warden-file",
-        minutes: "3 min",
+        minutes: "2 min",
         title: "Make a safe copy",
         brief: "Build forward without risking the previous mission.",
+        example: {
+          src: "./phase-2-1-safe-copy.png",
+          alt: "Two Blender project files showing the Mission I file copied into a new Mission II working file.",
+        },
         actions: [
           "Open gatewarden-01-forge.blend.",
           "Immediately choose File > Save As.",
           "Save the copy as gatewarden-02-blockout.blend.",
-          "Select the relic pieces and move them aside. They will become set dressing later.",
         ],
         proof: "The title bar shows the new filename.",
         stuck:
           "If you saved over the old file, keep working. The screenshot from Mission I still records that milestone.",
       },
       {
-        id: "warden-mass",
-        minutes: "7 min",
-        title: "Find the big masses",
+        id: "warden-stage",
+        minutes: "3 min",
+        title: "Clear the stage",
         brief:
-          "Characters read from large shapes first: torso, head, shoulders, then details.",
+          "Keep the relic, but make a clear space for the character blockout.",
+        example: {
+          src: "./phase-2-2-clear-stage.png",
+          alt: "The relic marker moved to the side, leaving an empty center area for the character.",
+        },
+        actions: [
+          "Select the three relic pieces in the viewport or Outliner.",
+          "Move them together to one side with G, then X.",
+          "Orbit once and confirm the center of the grid is clear.",
+        ],
+        proof: "The relic remains visible, but the center is empty.",
+        stuck:
+          "If only one piece moves, undo once and select the three relic pieces together in the Outliner.",
+      },
+      {
+        id: "warden-mass",
+        minutes: "5 min",
+        title: "Build the big masses",
+        brief:
+          "Start with torso and head. Details will not rescue unclear proportions.",
+        example: {
+          src: "./phase-2-3-big-masses.png",
+          alt: "A simple bust made from a torso cube, head sphere, and short neck cylinder.",
+        },
         actions: [
           "Add a cube for the torso and scale it taller than it is deep.",
           "Add a UV sphere for the head and scale it slightly narrower.",
           "Add a short cylinder for the neck only if the head feels disconnected.",
-          "Orbit often. Fix proportions from at least three angles.",
         ],
         proof: "The figure reads as a bust even with no armor or face.",
         stuck:
-          "If the character feels wrong, change only one ratio: head size, shoulder width, or torso height. Do not add detail to hide a proportion problem.",
+          "If the forms overlap strangely, select one in the Outliner and move it only on Z until the stack reads clearly.",
+      },
+      {
+        id: "warden-proportions",
+        minutes: "4 min",
+        title: "Set the proportions",
+        brief:
+          "A few large ratios decide whether the sentinel feels imposing or fragile.",
+        example: {
+          src: "./phase-2-4-proportions.png",
+          alt: "The blockout with broader shoulders and adjusted head-to-torso proportions.",
+        },
+        actions: [
+          "Add a cube across the upper torso as a temporary shoulder bar.",
+          "Scale it wider than the head and flatter than the torso.",
+          "Orbit from the front, side, and above.",
+          "Adjust only head size, shoulder width, or torso height until the figure feels stable.",
+        ],
+        proof: "The shoulders are wider than the head and the bust reads from three angles.",
+        stuck:
+          "Change one ratio at a time. Do not add armor until the head, shoulders, and torso feel balanced.",
       },
       {
         id: "warden-armor",
-        minutes: "8 min",
-        title: "Forge the silhouette",
+        minutes: "5 min",
+        title: "Forge the armor silhouette",
         brief:
           "A strong outer contour will survive distance, darkness, and a small laptop screen.",
+        example: {
+          src: "./phase-2-5-armor-silhouette.png",
+          alt: "The Gatewarden blockout with shoulder plates and a tall helmet crest.",
+        },
         actions: [
           "Add one flattened cube as a shoulder plate.",
           "Duplicate it with Shift+D, then move the copy to the other shoulder.",
-          "Add a cone or squashed sphere above the head as a helmet crest.",
-          "Rotate one shoulder plate a little. Perfect symmetry is less believable.",
+          "Add a narrow cube or cone above the head as a helmet crest.",
         ],
         proof: "The shoulders and helmet create a recognizable outer contour.",
         stuck:
           "Hide the grid with the Overlays button for ten seconds. If the outline is unclear, make one armor form larger instead of adding more pieces.",
       },
       {
+        id: "warden-asymmetry",
+        minutes: "3 min",
+        title: "Break the symmetry",
+        brief:
+          "One deliberate imbalance makes the blockout feel less manufactured.",
+        example: {
+          src: "./phase-2-6-asymmetry.png",
+          alt: "The blockout with one shoulder plate rotated and the helmet slightly tilted for asymmetry.",
+        },
+        actions: [
+          "Rotate one shoulder plate slightly with R.",
+          "Tilt the helmet crest a little in the opposite direction.",
+          "Orbit to confirm the changes read from the front and three-quarter view.",
+        ],
+        proof: "The two sides feel related without being mirror copies.",
+        stuck:
+          "Keep the changes small. If the figure looks broken, undo and use half as much rotation.",
+      },
+      {
         id: "warden-story",
-        minutes: "7 min",
-        title: "Choose the story beat",
+        minutes: "5 min",
+        title: "Pose the story beat",
         brief:
           "A production artist makes choices for the story, not just the model.",
+        example: {
+          src: "./phase-2-7-story-pose.png",
+          alt: "The posed Gatewarden blockout beside the relic, communicating a watchful mood.",
+        },
         actions: [
           "Choose one word: defiant, weary, watchful, or corrupted.",
           "Tilt the head and shoulders to support that word.",
@@ -205,28 +296,70 @@ export const missions: Mission[] = [
     steps: [
       {
         id: "oath-setup",
-        minutes: "5 min",
-        title: "Choose the fast path",
-        brief: "Fast feedback matters more than final realism right now.",
+        minutes: "2 min",
+        title: "Make the cinematic copy",
+        brief: "Protect the blockout before changing cameras and lights.",
+        example: {
+          src: "./phase-3-1-cinematic-copy.png",
+          alt: "Two Blender project files showing the blockout copied into a cinematic working file.",
+        },
         actions: [
-          "Open gatewarden-02-blockout.blend and save a copy as gatewarden-03-cinematic.blend.",
+          "Open gatewarden-02-blockout.blend.",
+          "Choose File > Save As.",
+          "Save the copy as gatewarden-03-cinematic.blend.",
+        ],
+        proof: "The title bar shows gatewarden-03-cinematic.blend.",
+        stuck:
+          "If the old filename remains in the title bar, repeat Save As before changing the scene.",
+      },
+      {
+        id: "oath-output",
+        minutes: "3 min",
+        title: "Set the fast render",
+        brief: "Fast feedback matters more than final realism right now.",
+        example: {
+          src: "./phase-3-2-fast-render.png",
+          alt: "A simplified Blender properties layout highlighting Eevee and a square 800 by 800 output.",
+        },
+        actions: [
           "Open Render Properties and choose Eevee as the render engine.",
           "In Output Properties, set a square image at 800 by 800 pixels.",
           "Set the output percentage to 100 percent.",
         ],
-        proof: "The file has a new name and the render engine is Eevee.",
+        proof: "The render engine is Eevee and the output is a square 800 by 800 pixels.",
         stuck:
           "If Blender labels Eevee differently in your version, choose the Eevee option that appears in Render Properties. Do not switch to Cycles for this mission.",
       },
       {
-        id: "oath-camera",
-        minutes: "7 min",
-        title: "Frame the sentinel",
+        id: "oath-angle",
+        minutes: "4 min",
+        title: "Find the story angle",
         brief:
-          "A camera angle can make the same model feel powerful, vulnerable, or mysterious.",
+          "Explore the shot before asking the camera to remember it.",
+        example: {
+          src: "./phase-3-3-story-angle.png",
+          alt: "The Gatewarden viewed from a low three-quarter story angle before the camera is locked.",
+        },
         actions: [
           "Orbit to a three-quarter view where the head and both shoulders are visible.",
           "Move slightly below eye level for a more imposing character.",
+          "Frame the character so the helmet and shoulders have breathing room.",
+        ],
+        proof: "The viewport angle supports the mood without cropping the silhouette.",
+        stuck:
+          "If the angle feels flat, move lower or farther to one side. Change only one direction at a time.",
+      },
+      {
+        id: "oath-camera",
+        minutes: "3 min",
+        title: "Lock the camera",
+        brief:
+          "Turn the viewport composition into a repeatable shot.",
+        example: {
+          src: "./phase-3-4-lock-camera.png",
+          alt: "The Gatewarden framed inside a square camera border with space around the helmet and shoulders.",
+        },
+        actions: [
           "Select the camera in the Outliner.",
           "Use View > Align View > Align Active Camera to View.",
           "Enter camera view from View > Cameras > Active Camera and check the frame.",
@@ -237,28 +370,74 @@ export const missions: Mission[] = [
           "If the camera view is empty, leave camera view, select the character, frame it, rebuild the angle, and align the camera again.",
       },
       {
-        id: "oath-light",
-        minutes: "10 min",
-        title: "Carve with two lights",
+        id: "oath-key",
+        minutes: "5 min",
+        title: "Place the key light",
         brief:
-          "One light describes the face. The other pulls the silhouette out of darkness.",
+          "One light should describe the face and the largest armor planes.",
+        example: {
+          src: "./phase-3-5-key-light.png",
+          alt: "The Gatewarden lit from the front and above by one warm key light.",
+        },
         actions: [
-          "Add an Area light in front of and above the character as the key light.",
-          "Rotate it toward the face and increase its power until the forms are readable.",
+          "Add an Area light in front of and above the character.",
+          "Rotate it toward the face.",
+          "Switch the viewport to Rendered shading.",
+          "Move the light closer until the face and chest planes are readable.",
+        ],
+        proof: "The face has shape, with one side brighter than the other.",
+        stuck:
+          "If everything stays gray, move the light closer before increasing its power.",
+      },
+      {
+        id: "oath-light",
+        minutes: "5 min",
+        title: "Add the rim light",
+        brief:
+          "A rear light can pull the silhouette out of darkness.",
+        example: {
+          src: "./phase-3-6-rim-light.png",
+          alt: "The Gatewarden with a warm key light and a cool rim light outlining one shoulder and the helmet.",
+        },
+        actions: [
           "Add a second Area light behind the character on the opposite side.",
           "Make the rear light narrower and brighter so it draws a rim along one shoulder and the helmet.",
-          "Switch the viewport to Rendered shading to judge the balance.",
+          "Move it sideways until the rim appears without lighting the whole face.",
         ],
         proof:
-          "The face has shape and at least one edge separates from the background.",
+          "At least one shoulder and one helmet edge separate from the background.",
         stuck:
-          "If everything is gray, move the key light closer. If everything is flat, move it farther to one side. Change position before changing power.",
+          "If the rim disappears, move the rear light farther to one side before changing its power.",
+      },
+      {
+        id: "oath-balance",
+        minutes: "4 min",
+        title: "Balance the shot",
+        brief:
+          "The key and rim should support each other instead of competing.",
+        example: {
+          src: "./phase-3-7-balance-shot.png",
+          alt: "A balanced rendered viewport with readable face planes and clear silhouette separation.",
+        },
+        actions: [
+          "Stay in camera view with Rendered shading active.",
+          "Check that the face is readable and the rim touches only part of the silhouette.",
+          "Move a light before changing its power.",
+          "Make one adjustment, then compare the whole frame again.",
+        ],
+        proof: "The face reads first and the rim separates the silhouette without becoming the subject.",
+        stuck:
+          "If both sides are equally bright, move the key farther to one side. If the rim dominates, move it farther behind the character.",
       },
       {
         id: "oath-render",
-        minutes: "8 min",
+        minutes: "4 min",
         title: "Deliver the first frame",
         brief: "A finished rough image teaches more than an unfinished perfect model.",
+        example: {
+          src: "./phase-3-8-first-frame.png",
+          alt: "The finished square cinematic Gatewarden frame ready to save as a PNG.",
+        },
         actions: [
           "Press F12 or choose Render > Render Image.",
           "Wait for the square frame to finish.",

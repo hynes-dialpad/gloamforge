@@ -195,6 +195,22 @@ export function MissionWorkspace({
                   ) : null}
 
                   <p className="stepBrief">{step.brief}</p>
+                  {step.example ? (
+                    <figure className="phaseExample">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- The GitHub Pages export uses bundled relative assets. */}
+                      <img
+                        src={step.example.src}
+                        alt={step.example.alt}
+                        width={1200}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>
+                        <strong>Reference checkpoint.</strong> Yours can vary.
+                      </figcaption>
+                    </figure>
+                  ) : null}
                   <ol>
                     {step.actions.map((action) => (
                       <li key={action}>{action}</li>

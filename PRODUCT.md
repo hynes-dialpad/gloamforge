@@ -28,7 +28,7 @@ Gloamforge teaches one original character through an accumulating production jou
 - Sessions happen on one laptop screen, often with Blender and the tutorial visible in separate windows or tabs.
 - The learner uses a trackpad today; the field kit must teach trackpad equivalents without assuming a three-button mouse.
 - A parent can discuss progress directly with the learner; the product does not need reporting or supervision features.
-- The first release contains three missions with four phases each.
+- The first release contains three missions and nineteen phases: four in Mission I, seven in Mission II, and eight in Mission III.
 
 ## Capabilities and Constraints
 
@@ -36,6 +36,8 @@ Gloamforge teaches one original character through an accumulating production jou
 - Progress is stored only in the browser under `gloamforge-progress-v1`.
 - One mission is visible as the working area at a time.
 - One phase is expanded at a time. Completing it collapses it and opens the next incomplete phase.
+- Mission I begins in Blender's default startup scene; there is no starter file to download.
+- Every phase includes a text-free reference checkpoint that illustrates the setup or a possible result without defining a single correct outcome.
 - Completed phases remain reopenable and can be marked incomplete.
 - All mission summaries remain selectable; later missions are not locked.
 - The product has no accounts, uploads, gallery, database, backend, cross-device sync, or progress report.
@@ -50,9 +52,10 @@ Gloamforge teaches one original character through an accumulating production jou
 
 ## Evidence on Hand
 
-- Three complete Blender missions and twelve phase instructions live in `app/course-data.ts`; `app/components/gloamforge-course.tsx` and `app/components/mission-workspace.tsx` present them.
-- The static-export test covers course content, originality, GitHub Pages paths, the text-free live hero, and `public/og.png` social metadata.
+- Three complete Blender missions and nineteen phase instructions live in `app/course-data.ts`; `app/components/gloamforge-course.tsx` and `app/components/mission-workspace.tsx` present them.
+- The static-export test covers course content, originality, GitHub Pages paths, the text-free live hero, all nineteen phase references, and `public/og.png` social metadata.
 - `public/og.png` provides the Gatewarden subject, palette, and social-preview composition; `public/gatewarden-hero.png` carries that world into the interface without embedded copy.
+- `public/phase-*.png` provides a 3:2 visual checkpoint for every phase, covering file setup, navigation, character blockout, camera, lighting, and the first finished render.
 - There are no learner testimonials, outcomes, portfolio examples, or usage analytics; future work must not fabricate them.
 
 ## Product Principles

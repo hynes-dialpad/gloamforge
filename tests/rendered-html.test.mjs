@@ -105,6 +105,54 @@ test("renders the full artwork policy and timer-free mission entry contract", as
     html,
     /<img[^>]+src="\.\/gatewarden-ready\.png"[^>]+width="1200"[^>]+height="800"[^>]+loading="lazy"/i,
   );
+  const phaseExamples = [
+    "phase-1-1-version.png",
+    "phase-1-2-orbit.png",
+    "phase-1-3-relic.png",
+    "phase-1-4-checkpoint.png",
+    "phase-2-1-safe-copy.png",
+    "phase-2-2-clear-stage.png",
+    "phase-2-3-big-masses.png",
+    "phase-2-4-proportions.png",
+    "phase-2-5-armor-silhouette.png",
+    "phase-2-6-asymmetry.png",
+    "phase-2-7-story-pose.png",
+    "phase-3-1-cinematic-copy.png",
+    "phase-3-2-fast-render.png",
+    "phase-3-3-story-angle.png",
+    "phase-3-4-lock-camera.png",
+    "phase-3-5-key-light.png",
+    "phase-3-6-rim-light.png",
+    "phase-3-7-balance-shot.png",
+    "phase-3-8-first-frame.png",
+  ];
+
+  for (const phaseExample of phaseExamples.slice(0, 4)) {
+    const escapedPhaseExample = phaseExample.replaceAll(".", "\\.");
+    assert.match(
+      html,
+      new RegExp(
+        `<img[^>]+src="\\./${escapedPhaseExample}"[^>]+width="1200"[^>]+height="800"[^>]+loading="lazy"`,
+        "i",
+      ),
+    );
+  }
+
+  for (const phaseExample of phaseExamples) {
+    const image = await readFile(
+      new URL(`../public/${phaseExample}`, import.meta.url),
+    );
+    assert.equal(image.subarray(1, 4).toString(), "PNG");
+    assert.equal(image.readUInt32BE(16), 1200);
+    assert.equal(image.readUInt32BE(20), 800);
+  }
+  assert.equal(
+    html.match(
+      /<figcaption><strong>Reference checkpoint\.<\/strong> Yours can vary\.<\/figcaption>/g,
+    )?.length,
+    4,
+    "expected one reassuring reference caption for every active Mission I phase",
+  );
 
   const assetsUrl = new URL("../dist/client/assets/", import.meta.url);
   const assetNames = await readdir(assetsUrl);
@@ -115,6 +163,12 @@ test("renders the full artwork policy and timer-free mission entry contract", as
         .map((name) => readFile(new URL(name, assetsUrl), "utf8")),
     )
   ).join("\n");
+  for (const phaseExample of phaseExamples) {
+    assert.match(
+      clientJavaScript,
+      new RegExp(`\\./${phaseExample.replaceAll(".", "\\.")}`),
+    );
+  }
   for (const artwork of [
     "./gatewarden-ready.png",
     "./gatewarden-shape.png",
@@ -122,6 +176,35 @@ test("renders the full artwork policy and timer-free mission entry contract", as
   ]) {
     assert.match(clientJavaScript, new RegExp(artwork.replace(".", "\\.")));
   }
+
+  const courseDataSource = await readFile(
+    new URL("../app/course-data.ts", import.meta.url),
+    "utf8",
+  );
+  for (const phaseTitle of [
+    "Make a safe copy",
+    "Clear the stage",
+    "Build the big masses",
+    "Set the proportions",
+    "Forge the armor silhouette",
+    "Break the symmetry",
+    "Pose the story beat",
+    "Make the cinematic copy",
+    "Set the fast render",
+    "Find the story angle",
+    "Lock the camera",
+    "Place the key light",
+    "Add the rim light",
+    "Balance the shot",
+    "Deliver the first frame",
+  ]) {
+    assert.match(courseDataSource, new RegExp(phaseTitle));
+  }
+  assert.equal(
+    courseDataSource.match(/src: "\.\/phase-[^"]+\.png"/g)?.length,
+    phaseExamples.length,
+    "expected every course phase to declare one reference image",
+  );
 
   const courseSource = await readFile(
     new URL("../app/components/gloamforge-course.tsx", import.meta.url),

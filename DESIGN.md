@@ -186,6 +186,8 @@ Progress uses a thin forged track with a transform-driven fill. Focus uses a cle
 
 - The header is a full-width button with phase title, time, and completion state.
 - Exactly one phase body is visible while a mission is in progress.
+- Every phase includes a text-free 3:2 reference figure after the brief and before the action list. Setup phases use simplified locator or file-flow illustrations; viewport phases show one possible result. The caption makes clear that the learner does not need to match it exactly.
+- Reference figures use the same full hairline border and raised-iron caption surface as the instructional system; they are not floating gallery cards.
 - Completing the current phase closes it and opens the next incomplete phase.
 - A completed header remains operable; its open body offers “Mark incomplete.”
 
@@ -211,7 +213,7 @@ Progress uses a thin forged track with a transform-driven fill. Focus uses a cle
 ### Do:
 
 - **Do** make every viewport show the next learner action before decorative lore.
-- **Do** use the text-free `public/gatewarden-hero.png` and the three mission renders as structural composition, not thumbnail decoration; reserve `public/og.png` for social previews.
+- **Do** use the text-free `public/gatewarden-hero.png` and the three mission renders as structural composition, then use `public/phase-*.png` only as instructional checkpoints; reserve `public/og.png` for social previews.
 - **Do** let completion materially change density by closing finished work.
 - **Do** use real HTML headings, buttons, links, progress semantics, and labelled regions.
 - **Do** disable reveal, scroll, and progress animation under `prefers-reduced-motion`.
